@@ -8,4 +8,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01_init.sql
+      - ./db/migrations/001_add_price_to_products.sql:/docker-entrypoint-initdb.d/02_add_price_to_products.sql
+      - ./db/migrations/002_seed_product_prices.sql:/docker-entrypoint-initdb.d/03_seed_product_prices.sql
+      - ./db/migrations/003_add_cost_to_products.sql:/docker-entrypoint-initdb.d/04_add_cost_to_products.sql
+      - ./db/migrations/004_seed_product_costs.sql:/docker-entrypoint-initdb.d/05_seed_product_costs.sql
